@@ -1,17 +1,17 @@
 pipeline {
   agent any
   stages {
-    stage('Run Maven') {
+    stage('') {
       parallel {
-        stage('Run Maven') {
+        stage('Maven Verion') {
           steps {
-            sh 'mvn compile test package'
+            bat(script: 'mvn --version', returnStatus: true, returnStdout: true)
           }
         }
 
-        stage('Maven Version') {
+        stage('Run Maven') {
           steps {
-            sh 'mvn --version'
+            bat(script: 'mvn compile test package', returnStatus: true, returnStdout: true)
           }
         }
 
